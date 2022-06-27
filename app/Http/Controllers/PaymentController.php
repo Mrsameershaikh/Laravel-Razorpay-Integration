@@ -10,8 +10,8 @@ use Session;
 class PaymentController extends Controller
 {
     //razorpay key details
-    //key id- rzp_test_KpdqgY3DYvB01n
-    //key secret- cxjGYq5MWwJi9hLj0E2nSudq
+    //key id-*******
+    //key secret- *******
 
     public function welcome()
     {
@@ -28,7 +28,7 @@ class PaymentController extends Controller
         $name = $request->input('name');
         $amount = $request->input('amount');
 
-        $api = new Api('rzp_test_KpdqgY3DYvB01n', 'cxjGYq5MWwJi9hLj0E2nSudq');
+        $api = new Api('enter key id', 'enter key secret');
         $order  = $api->order->create(array('receipt' => '123', 'amount' => $amount * 100 , 'currency' => 'INR')); 
         $orderId = $order['id']; 
 
@@ -56,7 +56,7 @@ class PaymentController extends Controller
         $user->payment_done = true;
         $user->razorpay_id = $data['razorpay_payment_id'];
 
-        $api = new Api('rzp_test_KpdqgY3DYvB01n', 'cxjGYq5MWwJi9hLj0E2nSudq');
+        $api = new Api('key id', 'key secret');
         
 
         try{
